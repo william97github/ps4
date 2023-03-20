@@ -1,0 +1,36 @@
+{% extends 'plantilla.html' %}
+
+{% block titulo %} Listar Cliente {% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <a class="btn btn-primary" href="{% url 'crear_alquiler' %}">Crear</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Entrada</th>
+          <th scope="col">Salida</th>
+          <th scope="col">Consola</th>
+          <th scope="col">Mandos</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Juego</th>
+          <th colspan="2" scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for list in lists %}
+        <tr>
+          <td>{{ list.hora_entrada }}</td>
+          <td>{{ list.hora_salida }}</td>
+          <td>{{ list.consola }}</td>
+          <td>{{ list.mando }}</td>
+          <td>{{ list.clientes }}</td>
+          <td>{{ list.juegos }}</td>
+          <td><a class="btn btn-warning" href="{% url 'editar_alquiler' list.id %}">Modificar</a></td>
+          <td><a class="btn btn-danger" href="{% url 'eliminar_alquiler' list.id %}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

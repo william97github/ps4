@@ -1,0 +1,83 @@
+{% extends 'plantilla.html' %}
+
+{% block titulo %} Dashboard {% endblock %}
+
+{% block contenido %}
+<div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-6 mt-2">
+        <div class="card ">
+          <div class="card-body">
+            Clientes: {{ count1 }}
+          </div>
+        </div>
+      </div>
+      <div class="col-6 mt-2">
+        <div class="card ">
+          <div class="card-body">
+            Clientes: {{ count2 }}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mt-2">
+        <div class="card">
+          <div class="card-body">
+              Horas en transcurso
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Entrada</th>
+                  <th scope="col">Salida</th>
+                  <th scope="col">Consola</th>
+                  <th scope="col">Mandos</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Juego</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for list in lists %}
+                <tr>
+                  <td>{{ list.hora_entrada }}</td>
+                  <td>{{ list.hora_salida }}</td>
+                  <td>{{ list.consola }}</td>
+                  <td>{{ list.mando }}</td>
+                  <td>{{ list.clientes }}</td>
+                  <td>{{ list.juegos }}</td>
+                  <td><a class="btn btn-warning" href="{% url 'editar_alquiler' list.id %}">Modificar</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mt-2">
+        <div class="card">
+          <div class="card-body">
+              Puntos semanales
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">puntos</th>
+                  <th scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for list in lists1 %}
+                <tr>
+                  <td>{{ list.clientes }}</td>
+                  <td>{{ list.mando }}</td>
+                  <td><a class="btn btn-warning" href="{% url 'editar_alquiler' list.id %}">Modificar</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+{% endblock %}

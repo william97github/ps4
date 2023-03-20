@@ -1,0 +1,26 @@
+{% extends 'plantilla.html' %}
+
+{% block titulo %} Listar Cliente {% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <a class="btn btn-primary" href="{% url 'crear_cliente' %}">Crear</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Cliente</th>
+          <th colspan="2" scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for list in lists %}
+        <tr>
+          <td>{{ list.nombre }}</td>
+          <td><a class="btn btn-warning" href="{% url 'editar_cliente' list.id %}">Modificar</a></td>
+          <td><a class="btn btn-danger" href="{% url 'eliminar_cliente' list.id %}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'plantilla.html' %}
+
+{% block titulo %} Editar Cliente {% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form action="" method="post" class="col-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">Modificar</button>
+    </form>
+</div>
+{% endblock %}

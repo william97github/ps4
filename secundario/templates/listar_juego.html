@@ -1,0 +1,28 @@
+{% extends 'plantilla.html' %}
+
+{% block titulo %} Listar Juego {% endblock %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <a class="btn btn-primary" href="{% url 'crear_juego' %}">Crear</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Juego</th>
+          <th scope="col">Descripción</th>
+          <th colspan="2" scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for list in lists %}
+        <tr>
+          <td>{{ list.titulo }}</td>
+          <td>{{ list.descripcion }}</td>
+          <td><a class="btn btn-warning" href="{% url 'editar_juego' list.id %}">Modificar</a></td>
+          <td><a class="btn btn-danger" href="{% url 'eliminar_juego' list.id %}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}
